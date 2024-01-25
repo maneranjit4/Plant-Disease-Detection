@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Detection</title>
+    <link rel="stylesheet" href="/staticfiles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="card mt-50" style="width: 100%;height: 100%;">
+            
+            <div class="card-header">
+                <div class="col-12" style="text-align: center;">
+                    <h1>
+                        Plant Disease Detector
+                    </h1>
+                </div>
+            </div>
+            <div class="card-body">
+                <form class="p-3 text-center" action="{{url_for('predict')}}" method="post"  enctype="multipart/form-data">
+                    <label class="form-control bg-dark" style="color: aliceblue;"> <h5>Select a Crop: </h5></label>
+                    <select class="selectpicker form-control" name="crop" id="crop">
+                        <option value="">Select a Crop</option>
+                        <option value="apple">Apple</option>
+                        <option value="strawberry">Strawberry</option>
+                        <option value="grape">Grape</option>
+                    </select>
+                    <br> <br>
+                    <label class="form-control bg-dark" style="color: aliceblue;"> <h5> Image Upload: </h5></label>
+                    <input class="form-control" type="file" name="imageupload" id="imageupload">
+                    <br><br>
+                    <button class="btn btn-primary mt-3 form-control"  type="submit" id ="sub"> <h4>Detect Disease</h4></button>
+                </form>
+            
+                <br>
+                <h2 class="text-center">
+                    {{prediction_text}}
+                </h2>
+                {% if image_path %}
+                    <img src="{{ url_for('static', filename=image_path) }}" class="img-fluid img-thumbnail mx-auto d-block" alt="Uploaded Image">
+                {% endif %}
+                <pre> 
+                        {{gen_text|safe}}
+                </pre>
+            </div>
+            </div>
+        </div>
+    </div>
+    <h1>Disease Detection</h1>
+    
+    
+
+</body>
+</html>
