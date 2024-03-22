@@ -15,8 +15,8 @@ from IPython.display import display
 from IPython.display import Markdown
 import html
 
-os.environ['GOOGLE_API_KEY']="AIzaSyDMqB16djsxnnl_9BMpJqC6s5-Q02vYR6k"
-genai.configure(api_key="AIzaSyDMqB16djsxnnl_9BMpJqC6s5-Q02vYR6k")
+os.environ['GOOGLE_API_KEY']="##########"
+genai.configure(api_key="############")
 
 app = Flask(__name__, template_folder = "template" ,static_folder="uploads")
 
